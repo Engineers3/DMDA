@@ -1,0 +1,17 @@
+Nd <- read.csv("C:\\Users\\krish\\Downloads\\NewspaperData.csv")
+install.packages("lattice")
+library(lattice)
+dotplot(Nd$sunday, main="Dot Plot of Sunday Circulations",col="dodgerblue4")
+dotplot(Nd$daily, main="Dot Plot of Daily Circulations", col="dodgerblue4")
+boxplot(Nd$sunday,col="dodgerblue4")
+boxplot(Nd$daily,col="dodgerblue4")
+colnames(Nd)
+model<- lm(sunday~daily,data =Nd)
+summary(model)
+new_daily=data.frame(daily=c(300,200))
+sun1=predict(model,new_daily)
+sun1
+pred<-predict(model)
+pred
+finaldata<-data.frame(Nd,pred,"Error"= Nd$sunday-pred)
+dotplot(Nd$sunday, main="Dot Plot of Sunday Circulations",col="dodgerblue4")
