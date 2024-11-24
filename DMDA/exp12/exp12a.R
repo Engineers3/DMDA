@@ -1,18 +1,7 @@
-library("MASS")  
-print(str(Cars93))  
-# Loading the Mass library.  
-# Creating a data frame from the main data set.  
-car_data<- data.frame(Cars93$AirBags, Cars93$Type)  
-# Creating a table with the needed variables.  
-car_data = table(Cars93$AirBags, Cars93$Type)   
-print(car_data)  
-# Performing the Chi-Square test.  
-print(chisq.test(car_data))
-print(str(Cars93)) 
-# Creating a data frame from the main data set.  
-car_data<- data.frame(Cars93$AirBags, Cars93$Type)  
-# Creating a table with the needed variables.  
-car_data = table(Cars93$AirBags, Cars93$Type)   
-print(car_data)
-# Performing the Chi-Square test.  
-print(chisq.test(car_data))
+
+observed <- matrix(c(20, 15, 15, 25, 15, 10), nrow = 2, byrow = TRUE)
+rownames(observed) <- c("Male", "Female")
+colnames(observed) <- c("Product A", "Product B", "Product C")
+chi_square_test <- chisq.test(observed)
+print(chi_square_test)
+mosaicplot(observed, main = "Mosaic Plot of Gender vs Product Preference", color = TRUE)
