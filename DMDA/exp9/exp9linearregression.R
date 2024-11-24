@@ -1,17 +1,11 @@
-Nd <- read.csv("C:\\Users\\krish\\Downloads\\NewspaperData.csv")
-install.packages("lattice")
-library(lattice)
-dotplot(Nd$sunday, main="Dot Plot of Sunday Circulations",col="dodgerblue4")
-dotplot(Nd$daily, main="Dot Plot of Daily Circulations", col="dodgerblue4")
-boxplot(Nd$sunday,col="dodgerblue4")
-boxplot(Nd$daily,col="dodgerblue4")
-colnames(Nd)
-model<- lm(sunday~daily,data =Nd)
-summary(model)
-new_daily=data.frame(daily=c(300,200))
-sun1=predict(model,new_daily)
-sun1
-pred<-predict(model)
-pred
-finaldata<-data.frame(Nd,pred,"Error"= Nd$sunday-pred)
-dotplot(Nd$sunday, main="Dot Plot of Sunday Circulations",col="dodgerblue4")
+
+set.seed(123)
+height <- c(150, 160, 170, 180, 190)
+weight <- c(50, 60, 65, 75, 85)
+linear_model <- lm(weight ~ height)
+summary(linear_model)
+ggplot(data = data.frame(height, weight), aes(x = height, y = weight)) +
+  geom_point() +
+  geom_smooth(method = "lm", color = "blue", se = FALSE) +
+  ggtitle("Linear Regression: Weight vs Height") +
+  theme_minimal()
