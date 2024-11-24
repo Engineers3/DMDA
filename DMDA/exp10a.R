@@ -1,7 +1,10 @@
-snowfall <- c(790,1170.8,860.1,1330.6,630.4,911.5,683.5,996.6,783.2,982,881.8,1021)  
-snowfall_timeseries <- ts(snowfall, start = c(2013,1), frequency = 12)  
-print(snowfall_timeseries)  
-png(file = "snowfall.png")  
-plot(snowfall_timeseries)  
-dev.off()  
-plot(snowfall_timeseries)
+# Sample Data: Sales over 6 months
+sales <- c(100, 120, 140, 160, 180, 200) 
+time_series <- ts(sales, frequency = 12, start = c(2023, 1)) 
+plot(time_series, 
+     main = "Sales Time Series", 
+     xlab = "Month", 
+     ylab = "Sales", 
+     col = "blue")
+linear_model <- lm(sales ~ c(1:6)) 
+abline(linear_model, col = "red") 
