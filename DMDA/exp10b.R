@@ -1,6 +1,10 @@
-
-time <- c(1, 2, 3, 4, 5)
-sales <- c(50, 60, 75, 95, 120)  
-plot(time, sales, main = "Sales vs Time", xlab = "Time", ylab = "Sales", pch = 16)
-nls_model <- nls(sales ~ a * time^2 + b * time + c, start = list(a = 1, b = 1, c = 50))
-curve(predict(nls_model, list(time = x)), add = TRUE, col = "red")
+# Define the values
+xvalues <- c(1.6, 2.1, 2, 2.23, 3.71, 3.25, 3.4, 3.86, 1.19, 2.21)
+yvalues <- c(5.19, 7.43, 6.94, 8.11, 18.75, 14.88, 16.06, 19.12, 3.21, 7.58)
+png(file = "nls.png")
+plot(xvalues, yvalues)
+model <- nls(yvalues ~ b1*xvalues^2 + b2, start = list(b1 = 1, b2 = 3))
+lines(seq(min(xvalues), max(xvalues), length.out = 100), predict(model, newdata = data.frame(xvalues = seq(min(xvalues), max(xvalues), length.out = 100))))
+dev.off()
+print(sum(resid(model)^2))
+print(confint(model))
