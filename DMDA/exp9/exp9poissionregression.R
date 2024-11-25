@@ -1,6 +1,6 @@
 
 set.seed(123)
-height(c(45,56,75,89,35,67)
+height<-c(45,56,75,89,35,67)
 exercises <- rpois(5, lambda = exp(0.05 * height)) 
 poisson_model <- glm(exercises ~ height, family = poisson)
 summary(poisson_model)
